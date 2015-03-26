@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @track.title %>
+</p>
+
+<p>
+  <strong>Embed code:</strong>
+  <%= @track.embed_code %>
+</p>
+
+<p>
+  <strong>Time start:</strong>
+  <%= @track.time_start %>
+</p>
+
+<p>
+  <strong>Time end:</strong>
+  <%= @track.time_end %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @track.event_date %>
+</p>
+
+<p>
+  <strong>Event name:</strong>
+  <%= @track.event_name %>
+</p>
+
+<p>
+  <strong>Event location:</strong>
+  <%= @track.event_location %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @track.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @track.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @track.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>
