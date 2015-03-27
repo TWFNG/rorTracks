@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :comments
   resources :tracks
   root to: 'tracks#index'

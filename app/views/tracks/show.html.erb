@@ -42,12 +42,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @track.user_id %>
+  <%= @track.user.name %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @track.category_id %>
+  <%= @track.category.name %>
 </p>
 
 <%= link_to 'Edit', edit_track_path(@track) %> |
