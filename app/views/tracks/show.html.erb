@@ -7,7 +7,7 @@
 
 <p>
   <strong>Embed code:</strong>
-  <%= @track.embed_code %>
+  <%= @track.embed_code.html_safe %>
 </p>
 
 <p>
@@ -52,3 +52,17 @@
 
 <%= link_to 'Edit', edit_track_path(@track) %> |
 <%= link_to 'Back', tracks_path %>
+
+
+
+<% if current_user.present? %>
+  <%= render 'comments/form' %>
+<% end %>
+
+<h1>Comments</h1>
+
+<% @track.comments.each do |c| %>
+  <h3><%= c.user.name %></h3>
+  <p><%= c.body %></p>
+  <p><%= c.created_at.strftime('%d/%m/%y %H:%M') %></p>
+<% end %>

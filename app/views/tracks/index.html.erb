@@ -20,7 +20,6 @@
       <th>Event name</th>
       <th>Event location</th>
       <th>Description</th>
-      <th>User</th>
       <th>Category</th>
       <th colspan="3"></th>
     </tr>
@@ -30,17 +29,16 @@
     <% @tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
-      <td><%= track.embed_code %></td>
+      <td><%= track.embed_code.html_safe %></td>
       <td><%= track.time_start %></td>
       <td><%= track.time_end %></td>
       <td><%= track.event_date %></td>
       <td><%= track.event_name %></td>
       <td><%= track.event_location %></td>
-      <td><%= track.description %></td>
-      <td><%= track.user_id %></td>
+      <td><%= track.description %></td>  
       <td><%= track.category_id %></td>
-      <% if user_signed_in? %>
-        <td><%= link_to 'Show', track %></td>
+      <td><%= link_to 'Show', track %></td>
+      <% if current_user.present? and current_user.id == track.user_id %>
         <td><%= link_to 'Edit', edit_track_path(track) %></td>
         <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>

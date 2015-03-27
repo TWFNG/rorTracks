@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :show]
    
   # GET /tracks
   # GET /tracks.json
@@ -11,6 +11,7 @@ class TracksController < ApplicationController
   # GET /tracks/1
   # GET /tracks/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /tracks/new
