@@ -1,4 +1,4 @@
-<%= form_for(@track) do |f| %>
+<%= bootstrap_form_for(@track) do |f| %>
   <% if @track.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
@@ -12,46 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :embed_code %><br>
     <%= f.text_area :embed_code %>
   </div>
   <div class="field">
-    <%= f.label :time_start %><br>
-    <%= f.text_field :time_start %>
-  </div>
-  <div class="field">
-    <%= f.label :time_end %><br>
-    <%= f.text_field :time_end %>
-  </div>
-  <div class="field">
-    <%= f.label :event_date %><br>
     <%= f.date_select :event_date %>
   </div>
   <div class="field">
-    <%= f.label :event_name %><br>
     <%= f.text_field :event_name %>
   </div>
   <div class="field">
-    <%= f.label :event_location %><br>
     <%= f.text_field :event_location %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
     <%= f.hidden_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
     <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] } %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'New Request' %>
   </div>
 <% end %>

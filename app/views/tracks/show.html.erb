@@ -1,68 +1,72 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @track.title %>
-</p>
-
-<p>
-  <strong>Embed code:</strong>
-  <%= @track.embed_code.html_safe %>
-</p>
-
-<p>
-  <strong>Time start:</strong>
-  <%= @track.time_start %>
-</p>
-
-<p>
-  <strong>Time end:</strong>
-  <%= @track.time_end %>
-</p>
-
-<p>
-  <strong>Event date:</strong>
-  <%= @track.event_date %>
-</p>
-
-<p>
-  <strong>Event name:</strong>
-  <%= @track.event_name %>
-</p>
-
-<p>
-  <strong>Event location:</strong>
-  <%= @track.event_location %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @track.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @track.user.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @track.category.name %>
-</p>
-
-<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Edit', edit_track_path(@track) %> 
 <%= link_to 'Back', tracks_path %>
 
 
+<!-- Blog Post -->
 
-<% if current_user.present? %>
+<!-- Title -->
+<h1> <%= @track.title %></h1>
+
+<!-- Author -->
+<p class="lead">
+  by <%= @track.user.name %>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<div class="row">
+  <div class="col-md-5"><span class="glyphicon glyphicon-time"></span> Posted on <%= @track.created_at.strftime('%d/%m/%y')%></div>
+  <div class="col-md-5"><strong>Category : </strong><%= @track.category.name %></div>
+</div>
+<hr>
+
+<!-- Preview Image -->
+<div class="embed-container"><%= @track.embed_code.html_safe %></div>
+
+<hr>
+
+<!-- Post Content -->
+<h3>Description</h3>
+<p class="lead"><%= @track.description %></p>
+<hr>
+<br>
+<div class="row">
+  <div class="col-md-4"><strong>Event date : </strong><%= @track.event_date %></div>
+  <div class="col-md-4"><strong>Event name : </strong><%= @track.event_name %></div>
+  <div class="col-md-4"><strong>Event location : </strong><%= @track.event_location %></div>
+</div>
+<hr>
+
+<!-- Blog Comments -->
+
+<!-- Comments Form -->
+<div class="well">
+  <h4>Leave a Comment:</h4>
+  <% if current_user.present? %>
   <%= render 'comments/form' %>
-<% end %>
+  <% else %>
+  <h2>You need to sign in to be able to comment</h2>
+  <% end %>
+</div>
 
-<h1>Comments</h1>
+<hr>
+
+<!-- Posted Comments -->
+
+<!-- Comment -->
 
 <% @track.comments.each do |c| %>
-  <h3><%= c.user.name %></h3>
-  <p><%= c.body %></p>
-  <p><%= c.created_at.strftime('%d/%m/%y %H:%M') %></p>
+<div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="http://placehold.it/64x64" alt="">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= c.user.name %>
+      <small><%= c.created_at.strftime('%d/%m/%y %H:%M') %></small>
+    </h4>
+    <p><%= c.body %></p>
+  </div>
+</div>
 <% end %>
